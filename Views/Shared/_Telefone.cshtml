@@ -1,0 +1,38 @@
+﻿<div class="form-group">
+    <label class="control-label col-md-2">Telefones</label>
+    <div class="col-md-10">
+        <table id="telefones">
+            @foreach (var t in ViewBag.Telefones)
+            {
+                <tr>
+                    <td><input class="form-control text-box single-line telefone" type="tel" name="telefone" value="@t.Numero" /></td>
+                    <td><span name="excluiLinha" class="btn btn-danger" onclick="excluiLinhaTelefone(this)">X</span></td>
+                </tr>
+            }
+        </table>
+        <span class="btn btn-default" onclick="insereLinhaTelefone()" id="adicionar">Adicionar Telefone</span>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+<script src="~/Scripts/jquery.maskedinput.min.js"></script>
+
+<script>
+
+
+    function insereLinhaTelefone() {
+        var linha = document.getElementById("telefones").insertRow();
+        linha.innerHTML = '<td><input class="form-control text-box single-line telefone" type="tel" name="telefone" /></td>';
+        linha.innerHTML += '<td><span class="btn btn-danger" onclick="excluiLinhaTelefone(this)">X</span></td>';
+    }
+
+    function excluiLinhaTelefone(linha) {
+        var i = linha.parentNode.parentNode.rowIndex;
+        document.getElementById("telefones").deleteRow(i);
+    }
+
+    $(function($) {
+        $('.telefone').mask('(99)9999-9999');
+    });
+
+</script>
+

@@ -1,0 +1,28 @@
+﻿@model List<TesteEntityFramework.Models.Aluno> 
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Alunos</h2>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <td>Nome</td>
+            <td>Logradouro</td>
+            <td>Numero</td>
+            <td>CEP</td>
+            <td>Idade</td>
+        </tr>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Nome</td>
+                <td>@a.Endereco.Logradouro</td>
+                <td>@a.Endereco.Numero</td>
+                <td>@a.Endereco.CEP</td>
+                <td>@a.Idade</td>
+            </tr>
+        }
+    </table>
+</div>
+
